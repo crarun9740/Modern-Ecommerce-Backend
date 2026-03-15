@@ -5,6 +5,7 @@ import {
   getproductbyID,
   updateproduct,
   deleteproduct,
+  getproductbycategory,
 } from "../Controller/productController.js";
 import router from "./UserRoutes.js";
 import { protect } from "../Middleware/authMiddleware.js";
@@ -14,8 +15,23 @@ const productrouter = express.Router();
 productrouter.get("/", getproduct);
 productrouter.get("/:id", getproductbyID);
 
-productrouter.post("/", protect, authorization("admin"), createProduct);
-productrouter.put("/:id", protect, authorization("admin"), updateproduct);
-productrouter.delete("/:id", protect, authorization("admin"), deleteproduct);
-
+productrouter.post(
+  "/createproduct",
+  protect,
+  authorization("admin"),
+  createProduct,
+);
+productrouter.put(
+  "/updateproduct/:id",
+  protect,
+  authorization("admin"),
+  updateproduct,
+);
+productrouter.delete(
+  "/deleteproduct/:id",
+  protect,
+  authorization("admin"),
+  deleteproduct,
+);
+productrouter.get("/category/categoryid", getproductbycategory);
 export default productrouter;

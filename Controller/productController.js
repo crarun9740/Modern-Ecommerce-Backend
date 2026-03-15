@@ -63,3 +63,12 @@ export const deleteproduct = async (req, res) => {
     res.json({ message: "Product deleted successfully.." });
   } catch (error) {}
 };
+
+export const getproductbycategory = async (req, res) => {
+  try {
+    const product = await Product.find({
+      category: req.params.categoryid,
+    }).populate("category");
+    res.json(product);
+  } catch (error) {}
+};

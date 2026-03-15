@@ -10,6 +10,6 @@ app.use(express.json());
 
 app.use("/api/auth", UserRoutes);
 app.use("/api/products", productrouter);
-app.use("api/category", categoryRouter);
+app.use("/api/category", categoryRouter);
 
 export default app;
